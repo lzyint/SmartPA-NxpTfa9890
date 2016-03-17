@@ -1,0 +1,98 @@
+/*++
+;
+;Copyright (c) Microsoft Corporation.  All rights reserved.
+;
+;Module Name:
+;    NxpTfa9890.INF
+;
+;Abstract:
+;    INF file for installing the Sensors 2.0 TFA9890 Accelerometer Sample Driver
+;
+;--*/
+
+[Version]
+Signature   = "$WINDOWS NT$"
+Class       = Sensor
+ClassGuid   = {5175D334-C371-4806-B3BA-71FD53C9258D}
+Provider    = %ProviderName% ;Put the name of your company here
+CatalogFile = NxpTfa9890.cat
+DriverVer   = 08/14/2014,2.00.00.01 ;Should be handled by tool that converts from inx to inf
+
+[DestinationDirs]
+;12 == Windows\System32\Drivers\UMDF
+DefaultDestDir = 12,UMDF
+
+[SourceDisksNames]
+1 = %MediaDescription%,,,""
+
+[SourceDisksFiles]
+NxpTfa9890.dll   = 1,,
+
+[Manufacturer]
+%ManufacturerName% = NxpTfa9890_Device, NT$ARCH$
+
+
+;*******************************
+; NxpTfa9890 Install Section
+;*******************************
+
+[NxpTfa9890_Device.NT$ARCH$]
+; DisplayName       Section          DeviceId
+; -----------       -------          --------
+%NxpTfa9890_DevDesc% = NxpTfa9890_Inst, ACPI\NxpTfa9890
+
+[NxpTfa9890_Inst.NT]
+CopyFiles = NxpTfa9890DriverCopy
+
+[NxpTfa9890_Inst.NT.hw]
+
+[NxpTfa9890DriverCopy]
+NxpTfa9890.dll
+
+[DestinationDirs]
+NxpTfa9890DriverCopy = 12,UMDF
+
+;-------------- Service installation
+
+[NxpTfa9890_Inst.NT.Services]
+AddService = WUDFRd,0x000001fa,WUDFRD_ServiceInstall
+
+[NxpTfa9890_Inst.NT.CoInstallers]
+AddReg = CoInstallers_AddReg
+
+[WUDFRD_ServiceInstall]
+DisplayName   = %WudfRdDisplayName%
+ServiceType   = %SERVICE_KERNEL_DRIVER%
+StartType     = %SERVICE_DEMAND_START%
+ErrorControl  = %SERVICE_ERROR_NORMAL%
+ServiceBinary = %12%\WUDFRd.sys
+
+;-------------- WDF specific section
+
+[NxpTfa9890_Inst.NT.Wdf]
+UmdfService              = NxpTfa9890, NxpTfa9890_Install
+UmdfServiceOrder         = NxpTfa9890
+UmdfDirectHardwareAccess = AllowDirectHardwareAccess
+UmdfFileObjectPolicy     = AllowNullAndUnknownFileObjects
+UmdfFsContextUsePolicy   = CannotUseFsContexts
+
+[NxpTfa9890_Install]
+UmdfLibraryVersion       = $UMDFVERSION$
+ServiceBinary            = %12%\UMDF\NxpTfa9890.dll
+UmdfExtensions           = SensorsCx0102
+
+[CoInstallers_AddReg]
+HKR,,CoInstallers32,0x00010000,"WudfCoinstaller.dll"
+
+[Strings]
+;Localizable Strings
+MediaDescription         = "TFA9890 accelerometer sample Driver"
+ProviderName             = "TODO-Set-Provider"
+ManufacturerName         = "TODO-Set-Manufacturer"
+NxpTfa9890_DevDesc       = "TFA9890 accelerometer sample"
+WudfRdDisplayName        = "Windows Driver Foundation - User-mode Driver Framework Reflector"
+
+;Non-Localizable Strings
+SERVICE_KERNEL_DRIVER    = 1
+SERVICE_DEMAND_START     = 3
+SERVICE_ERROR_NORMAL     = 1

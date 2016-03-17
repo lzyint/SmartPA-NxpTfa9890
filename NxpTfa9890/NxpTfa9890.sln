@@ -1,0 +1,24 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 12.0
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NxpTfa9890", "NxpTfa9890.vcxproj", "{C684376E-6250-4AB8-A48E-DC4FB6EE3A16}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|ARM = Debug|ARM
+		Release|ARM = Release|ARM
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C684376E-6250-4AB8-A48E-DC4FB6EE3A16}.Debug|ARM.ActiveCfg = Debug|ARM
+		{C684376E-6250-4AB8-A48E-DC4FB6EE3A16}.Debug|ARM.Build.0 = Debug|ARM
+		{C684376E-6250-4AB8-A48E-DC4FB6EE3A16}.Debug|ARM.Deploy.0 = Debug|ARM
+		{C684376E-6250-4AB8-A48E-DC4FB6EE3A16}.Release|ARM.ActiveCfg = Release|ARM
+		{C684376E-6250-4AB8-A48E-DC4FB6EE3A16}.Release|ARM.Build.0 = Release|ARM
+		{C684376E-6250-4AB8-A48E-DC4FB6EE3A16}.Release|ARM.Deploy.0 = Release|ARM
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

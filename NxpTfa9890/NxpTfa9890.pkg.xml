@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Package xmlns="urn:Microsoft.WindowsPhone/PackageSchema.v8.00"
+  Platform="QC8996"
+  Owner="Qualcomm"
+  Component="QC8996"
+  SubComponent="NxpTfa9890"
+  OwnerType="SiliconVendor"
+  ReleaseType="Production"
+  Partition="MainOS">
+  <Components>
+    <OSComponent>
+    
+      <Files>
+        <File DestinationDir="$(runtime.drivers)\umdf" Source="NxpTfa9890.dll" />
+      </Files>
+
+    </OSComponent>
+    
+    <Driver InfSource="NxpTfa9890.inf">
+      <Security InfSectionName="Alsp_Inst_SecurityAddReg">
+        <AccessedByCapability Id="ID_CAP_SENSORS" Rights="$(GENERIC_READ)$(GENERIC_EXECUTE)" />
+      </Security>
+      <Reference Source="NxpTfa9890.dll" />
+    </Driver>
+    
+  </Components>
+  
+</Package>

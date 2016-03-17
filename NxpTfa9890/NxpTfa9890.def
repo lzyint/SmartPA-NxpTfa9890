@@ -1,0 +1,6 @@
+; NxpTfa9890.def : Declares the module parameters.
+
+LIBRARY NxpTfa9890
+
+EXPORTS
+
