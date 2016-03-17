@@ -73,32 +73,6 @@ typedef struct _REGISTER_SETTING
 } REGISTER_SETTING, *PREGISTER_SETTING;
 
 
-//inline DATA_RATE _GetDataRateFromReportInterval(_In_ ULONG ReportInterval);
-
-// Array of settings that describe the initial device configuration.
-//const REGISTER_SETTING g_ConfigurationSettings[] =
-//{
-//    // Standby mode
-//    { TFA9890_POWER_CTL, TFA9890_POWER_CTL_STANDBY },
-//    // +-16g, 13-bit resolution
-//    { TFA9890_DATA_FORMAT, 
-//      TFA9890_DATA_FORMAT_FULL_RES | TFA9890_DATA_FORMAT_JUSTIFY_RIGHT | TFA9890_DATA_FORMAT_RANGE_16G },
-//    // No FIFO
-//    { TFA9890_FIFO_CTL, TFA9890_FIFO_CTL_MODE_BYPASS },
-//    // Data rate set to default
-//    { TFA9890_BW_RATE, _GetDataRateFromReportInterval(DEFAULT_ACCELEROMETER_REPORT_INTERVAL).RateCode },
-//    // Activity threshold set to default change sensitivity
-//    { TFA9890_THRESH_ACT,
-//      static_cast<BYTE>(DEFAULT_ACCELEROMETER_CHANGE_SENSITIVITY / ACCELEROMETER_CHANGE_SENSITIVITY_RESOLUTION) },
-//    // Activity detection enabled, AC coupled
-//    { TFA9890_ACT_INACT_CTL, 
-//      TFA9890_ACT_INACT_CTL_ACT_ACDC | TFA9890_ACT_INACT_CTL_ACT_X | TFA9890_ACT_INACT_CTL_ACT_Y | TFA9890_ACT_INACT_CTL_ACT_Z },
-//    // Activity interrupt mapped to pin 1
-//    { TFA9890_INT_MAP, TFA9890_INT_ACTIVITY ^ TFA9890_INT_MASK},
-//};
-
-
-
 typedef class _NxpTfa9890Device
 {
 private:
@@ -121,12 +95,8 @@ private:
     SENSOROBJECT                m_SensorInstance;
 
     //// Sensor Specific Properties
-    //PSENSOR_PROPERTY_LIST       m_pSupportedDataFields;
     PSENSOR_COLLECTION_LIST     m_pEnumerationProperties;
     PSENSOR_COLLECTION_LIST     m_pSensorProperties;
-    //PSENSOR_COLLECTION_LIST     m_pSensorData;
-    //PSENSOR_COLLECTION_LIST     m_pDataFieldProperties;
-    //PSENSOR_COLLECTION_LIST     m_pThresholds;
 
 public:
     // WDF callbacks
